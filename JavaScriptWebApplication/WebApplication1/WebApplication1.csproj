@@ -106,12 +106,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Aplication\app.js" />
+    <Content Include="Aplication\styles.css" />
+    <Content Include="Aplication\WebForm1.aspx" />
+    <Content Include="ArraysAvanzados\app.js" />
+    <Content Include="ArraysAvanzados\icon-144x144.png" />
+    <Content Include="ArraysAvanzados\icon-192x192.png" />
+    <Content Include="ArraysAvanzados\icon-36x36.png" />
+    <Content Include="ArraysAvanzados\icon-48x48.png" />
+    <Content Include="ArraysAvanzados\icon-72x72.png" />
+    <Content Include="ArraysAvanzados\icon-96x96.png" />
+    <Content Include="ArraysAvanzados\index.html" />
+    <Content Include="ArraysAvanzados\sitemap.xml" />
+    <Content Include="ArraysAvanzados\styles.css" />
+    <Content Include="ArraysAvanzados\WebForm1.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="DatosJavaScript\Js\JavaScript.js" />
+    <Content Include="DatosJavaScript\WebForm1.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -124,6 +140,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="ArraysAvanzados\manifest.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -160,6 +177,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aplication\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplication\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -169,12 +193,26 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ArraysAvanzados\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArraysAvanzados\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DatosJavaScript\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DatosJavaScript\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -210,6 +248,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Aplication\Js\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

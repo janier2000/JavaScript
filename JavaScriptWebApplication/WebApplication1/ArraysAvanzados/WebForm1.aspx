@@ -1,0 +1,176 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.Arrays_avanzados.WebForm1" %>
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreeHabits | Habit Tracker</title>
+    <meta
+      name="description"
+      content="FreeHabits es una app web para crear hábitos, registrar check-ins diarios o semanales y visualizar tus rachas para mantener la constancia."
+    />
+    <meta name="author" content="Oscar Barajas" />
+    <link rel="canonical" href="https://freehabits.website/" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#333333" />
+    <link rel="manifest" href="manifest.json" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FreeHabits" />
+    <meta property="og:title" content="FreeHabits | Habit Tracker" />
+    <meta
+      property="og:description"
+      content="Crea hábitos, registra tu progreso y mantén tus rachas al día con FreeHabits."
+    />
+    <meta property="og:url" content="https://freehabits.website/" />
+    <meta
+      property="og:image"
+      content="https://s3.us-east-1.amazonaws.com/bricks.lat/gndx_freehabits.website.png"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FreeHabits | Habit Tracker" />
+    <meta
+      name="twitter:description"
+      content="Crea hábitos, registra tu progreso y mantén tus rachas al día con FreeHabits."
+    />
+    <meta
+      name="twitter:image"
+      content="https://s3.us-east-1.amazonaws.com/bricks.lat/gndx_freehabits.website.png"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "FreeHabits",
+        "url": "https://freehabits.website/",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Web",
+        "description": "App web para crear hábitos, registrar check-ins y ver rachas."
+      }
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>FreeHabits</h1>
+      </header>
+
+      <main>
+        <section class="date-section">
+          <div class="date-display">
+            <span class="day-number" id="dayNumber">12</span>
+            <span class="separator">/</span>
+            <span class="month" id="monthName">Enero</span>
+          </div>
+          <p class="day-name" id="dayName">Lunes</p>
+        </section>
+
+        <section class="greeting">
+          <p id="greetingText">Hola, Usuario</p>
+        </section>
+
+        <section class="daily-quote">
+          <p id="savedQuote" class="quote-text">
+            La fuerza no viene de la capacidad. Viene de la voluntad.
+          </p>
+        </section>
+
+        <section class="habits-section">
+          <div class="section-header">
+            <h2>Tablero mensual</h2>
+            <button class="btn-primary" id="openRegisterModal">Registrar</button>
+            <button class="btn-primary" id="exportHabits">Exportar</button>
+          </div>
+
+          <div class="habits-table" id="habitsTable">
+            <p class="empty-state">No hay hábitos. Haz clic en "Crear Hábito" para comenzar.</p>
+          </div>
+        </section>
+
+        <section class="streaks-section" id="streaksSection">
+          <div class="section-header">
+            <h2>🔥 Rachas actuales</h2>
+          </div>
+          <div class="streaks-container" id="streaksContainer">
+            <p class="empty-state">Las rachas aparecerán aquí cuando registres hábitos.</p>
+          </div>
+        </section>
+
+        <button class="btn-add-habit" id="openCreateModal">+ Crear Hábito</button>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-container">
+          <p class="footer-text">
+            © 2026. FreeNotes.pro - All rights REVERSED
+            <span class="footer-span">
+              Made with ♥ in Medellín Colombia, by
+              <a href="https://gndx.dev" class="footer-link">GNDX</a>
+            </span>
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <div id="createHabitModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Crear Hábito</h3>
+          <button class="close-modal" data-modal="createHabitModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="habitName">Nombre del hábito</label>
+            <input type="text" id="habitName" placeholder="Ej: Hacer ejercicio" />
+          </div>
+          <div class="form-group">
+            <label for="habitFrequency">Frecuencia</label>
+            <select id="habitFrequency">
+              <option value="daily">Diario</option>
+              <option value="weekly">Semanal</option>
+            </select>
+          </div>
+          <p class="info-text">Máximo 5 hábitos</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" data-modal="createHabitModal">Cancelar</button>
+          <button class="btn-primary" id="createHabitBtn">Crear</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Registrar Hábito</h3>
+          <button class="close-modal" data-modal="registerModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="habitSelect">Selecciona un hábito</label>
+            <select id="habitSelect">
+              <option value="">Selecciona un hábito</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="checkInDate">Fecha</label>
+            <input type="date" id="checkInDate" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" data-modal="registerModal">Cancelar</button>
+          <button class="btn-primary" id="checkInBtn">Registrar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="messageBox" class="message-box hidden"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
